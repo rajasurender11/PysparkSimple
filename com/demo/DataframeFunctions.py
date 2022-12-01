@@ -9,6 +9,7 @@ spark = SparkSession \
 cust_columns = ["cust_id","bank_name","cust_name","gender","mobile_no"]
 cust_loc ="C:\\surender\\hadoop_course\\4_inputfiles\\accounts_profile.txt"
 
+
 trans_columns = ["cust_id","atm_id","trans_date","amount","status"]
 trans_loc ="C:\\surender\\hadoop_course\\4_inputfiles\\atm_trans.txt"
 

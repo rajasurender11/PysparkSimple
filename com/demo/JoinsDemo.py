@@ -13,6 +13,7 @@ emp_data = [("100", "surender"),
             (None, "kumar"),
             (" ", "Vikram")]
 
+
 skills_columns = ["id","skill_set"]
 skills_data = [("100", "BIGDATA"),
             ("101", "SPARK"),
@@ -31,6 +32,7 @@ skills_df = skills_rdd.toDF(skills_columns)
 emp_df.createOrReplaceTempView("employee")
 skills_df.createOrReplaceTempView("skills")
 
+df1 = spark.sql(""" select  * from employee """)
 spark.sql(""" select  * from employee """).show()
 spark.sql(""" select  * from skills """).show()
 
@@ -46,7 +48,7 @@ on(a.emp_id = b.id)
 spark.sql("""
 select * from 
 employee a
-left outer join
+left  join
 skills b
 on(a.emp_id = b.id)
 """).show()

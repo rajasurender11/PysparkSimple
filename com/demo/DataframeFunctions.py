@@ -19,8 +19,8 @@ trans_delimiter = "|"
 def readFilefromLoc(loc):
     return open(loc,"r")
 
-def getRDD(trans_data):
-    return spark.sparkContext.parallelize(trans_data)
+def getRDD(t):
+    return spark.sparkContext.parallelize(t)
 
 def map_record_to_tuple(str,delimter):
     arr=[]

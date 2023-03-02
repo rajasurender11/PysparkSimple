@@ -50,7 +50,7 @@ select bank,amount,rank_number from
 from 
 (select split(atm_id, ':')[0] as bank, cast(amount as Int) as amount from trans_table)b 
 )a
-where rank_number = 2
+
 """).show(100)
 
 

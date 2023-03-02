@@ -45,6 +45,7 @@ def main():
     custMappedRDD  = cust_rdd.map(lambda elem:map_record_to_tuple(elem,cust_delimiter))
     transMappedRDD  = trans_rdd.map(lambda elem:map_record_to_tuple(elem,trans_delimiter))
     cust_df   = getDFfromRDD(custMappedRDD,cust_columns)
+    cust_df.show()
     trans_df   = getDFfromRDD(transMappedRDD,trans_columns)
     cust_df.createOrReplaceTempView("customer")
     trans_df.createOrReplaceTempView("trans")

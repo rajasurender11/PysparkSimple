@@ -8,7 +8,7 @@ dataSchema = StructType([
 ])
 
 custSchema = StructType([
-    StructField("cust_id",StringType(),True),
+    StructField("cust_id",LongType(),True),
     StructField("bank_name",StringType(),True),
     StructField("cust_name", StringType(), True),
     StructField("gender", StringType(), True),

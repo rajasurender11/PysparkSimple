@@ -1,6 +1,7 @@
 from pyspark.sql import *
 from pyspark.sql.types import *
 from com.schema import AllSchemas
+from pyspark.sql.functions import col
 
 
 tupled_data = [("James","Smith","36636","M",3000),
@@ -31,7 +32,6 @@ spark = SparkSession \
 
 #--------------------------------------------------------------
 tupled_rdd = spark.sparkContext.parallelize(tupled_data)
-print(tupled_rdd.getNumPartitions())
 df1 = tupled_rdd.toDF(columnsList)
 #df1.show()
 df2 = spark.createDataFrame(tupled_rdd,AllSchemas.dataSchema)
@@ -55,10 +55,17 @@ df5 = tupled_rdd.toDF(cust_columns)
 df6 = spark.createDataFrame(tupled_rdd,AllSchemas.custSchema)
 #df6.show()
 
+df5.printSchema()
+df6.printSchema()
+df_joined = df5.join(df6,df5.cust_id == df6.cust_id,"inner")
+df_joined.show()
 #--------------------------------------------------------------
 fileLoc = "C:\\surender\\hadoop_course\\4_inputfiles\\accounts_profile.csv"
 df7 = spark.read.option("header",True).csv(fileLoc)
-df7.show()
+#df7.show()
+
+
+
 
 
 #--------------------------------------------------------------

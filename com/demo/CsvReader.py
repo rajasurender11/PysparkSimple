@@ -14,6 +14,10 @@ df = spark.read.option("header",True).csv(fileLoc)
 
 df1 = df.select("customer_name", "gender")
 
+list_of_columns = ["customer_name","gender"]
+
+df2 = df.select(*list_of_columns)
+
 
 df.createOrReplaceTempView("t1")
 

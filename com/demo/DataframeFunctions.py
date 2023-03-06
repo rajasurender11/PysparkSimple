@@ -54,11 +54,11 @@ def main():
         .drop("cust_id")\
         .select("type_of_trans")\
         .distinct()
-
+    new_df.show()
 
     agg_df = trans_df.groupBy("cust_id").agg(sum("amount").alias("total_sum"),\
                                              count("trans_date").alias("total_trans"))
-    #agg_df.show()
+    agg_df.show()
 
 
 

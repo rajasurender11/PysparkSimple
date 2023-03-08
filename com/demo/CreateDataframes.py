@@ -33,13 +33,14 @@ spark = SparkSession \
 #--------------------------------------------------------------
 tupled_rdd = spark.sparkContext.parallelize(tupled_data)
 df1 = tupled_rdd.toDF(columnsList)
-#df1.show()
+df1.show()
 df2 = spark.createDataFrame(tupled_rdd,AllSchemas.dataSchema)
-#df2.show()
+df2.show()
 df1.printSchema()
 df2.printSchema()
 #--------------------------------------------------------------
 rdd = spark.sparkContext.parallelize(raw_data)
+print(rdd.collect())
 mapped_rdd = rdd.map(lambda elem : map_record_to_tuple(elem))
 df3 = mapped_rdd.toDF(columnsList)
 #df3.show()
@@ -58,7 +59,7 @@ df6 = spark.createDataFrame(tupled_rdd,AllSchemas.custSchema)
 df5.printSchema()
 df6.printSchema()
 df_joined = df5.join(df6,df5.cust_id == df6.cust_id,"inner")
-df_joined.show()
+#df_joined.show()
 #--------------------------------------------------------------
 fileLoc = "C:\\surender\\hadoop_course\\4_inputfiles\\accounts_profile.csv"
 df7 = spark.read.option("header",True).csv(fileLoc)

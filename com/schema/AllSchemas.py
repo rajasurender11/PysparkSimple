@@ -14,3 +14,17 @@ custSchema = StructType([
     StructField("gender", StringType(), True),
     StructField("mobile_no", LongType(), True)
 ])
+atmTransSchema = StructType([
+    StructField("cust_id",LongType(),True),
+    StructField("atm_id",StringType(),True),
+    StructField("trans_dt", StringType(), True),
+    StructField("trans_amount", LongType(), True),
+    StructField("trans_status", StringType(), True)
+])
+
+jsonSchema = StructType([
+    StructField("emp_id",StringType(),True),
+    StructField("emp_name",StringType(),True),
+    StructField("emp_company", StringType(), True),
+    StructField("emp_city", StringType(), True)
+])

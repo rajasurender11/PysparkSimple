@@ -1,5 +1,6 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import *
+from com.schema.AllSchemas import atmTransSchema
 
 spark = SparkSession \
     .builder \
@@ -7,8 +8,11 @@ spark = SparkSession \
     .getOrCreate()
 
 fileLoc = "C:\\surender\\hadoop_course\\4_inputfiles\\accounts_profile.csv"
+loc = "C:\\surender\\hadoop_course\\4_inputfiles\\atm_trans.txt"
 
 df = spark.read.option("header",True).csv(fileLoc)
+df1 = spark.read.option("sep","|").schema(atmTransSchema).csv(loc)
+df1.show()
 
 #df.show()
 

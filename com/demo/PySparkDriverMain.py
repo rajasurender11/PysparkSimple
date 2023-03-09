@@ -3,6 +3,9 @@ from com.demo.PySparkController import ReadController
 
 sparkAppName = "Files Reader"
 
+"""
+This main function will further invoke the ReadController functions 
+"""
 def main(appName):
     spark = PySparkFunctions.getSparkSession(appName)
     readerObj = ReadController()

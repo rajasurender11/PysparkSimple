@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from com.schema.AllSchemas import jsonSchema
+from com.schema.AllSchemas import jsonSchema,atmTransSchema
 
 def getSparkSession(appName):
     spark = SparkSession \
@@ -14,6 +14,10 @@ def readCSVAsDF(spark,csvLoc):
 
 def readJSONAsDF(spark,jsonLoc):
     df = spark.read.schema(jsonSchema).json(jsonLoc)
+    return df
+
+def readTXTAsDF(spark,txtLoc):
+    df = spark.read.option("sep","|").schema(atmTransSchema).csv(txtLoc)
     return df
 
 def selectAttributes(df,attributesList):

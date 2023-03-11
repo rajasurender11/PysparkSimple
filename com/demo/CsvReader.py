@@ -14,6 +14,13 @@ df = spark.read.option("header",True).csv(fileLoc)
 df1 = spark.read.option("sep","|").schema(atmTransSchema).csv(loc)
 df1.show()
 
+df1.groupBy("cust_id")\
+    .agg(sum("trans_amount").alias("total_amount"))\
+    .orderBy(col("total_amount").desc()) \
+    .limit(3)\
+    .show()
+
+
 #df.show()
 
 df1 = df.select("customer_name", "gender")
@@ -21,7 +28,6 @@ df1 = df.select("customer_name", "gender")
 list_of_columns = ["customer_name","gender"]
 
 df2 = df.select(*list_of_columns)
-
 
 df.createOrReplaceTempView("t1")
 

@@ -20,7 +20,7 @@ raw_data = ["James,Smith,36636,M,3000",
             "Jen,Mary,899,F,-1"
             ]
 
-def map_record_to_tuple(str):
+def map_reco rd_to_tuple(str):
     arr=str.split(",")
     return (arr[0],arr[1],arr[2],arr[3],arr[4])
 

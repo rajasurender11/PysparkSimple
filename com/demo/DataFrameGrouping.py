@@ -94,4 +94,4 @@ agg_table b
 on(a.org_name = b.org_name and a.salary = b.max_salary)
 """)
 
-joined.show()
+joined.show( )

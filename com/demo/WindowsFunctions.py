@@ -42,7 +42,7 @@ max_table
 on(trans_table.cust_id = max_table.cust_id and trans_table.trans_date =max_table.max_date)
 """)
 
-
+# HDFC:1001  --> split(atm_id, ':')[0] split(HDFC:1001 , ':')[0]
 
 spark.sql("""
 select bank,amount,rank_number from 
@@ -56,7 +56,12 @@ from
 
 spark.sql("""
 
-select cust_id,atm_id,trans_date,bank, amount,dense_rank() over(partition by bank order by amount desc) as rank_number
+select cust_id,
+atm_id,
+trans_date,
+bank, 
+amount,
+dense_rank() over(partition by bank order by amount desc) as rank_number
 from 
 (select cust_id,atm_id,trans_date, split(atm_id, ':')[0] as bank, cast(amount as Int) as amount from trans_table)b 
 

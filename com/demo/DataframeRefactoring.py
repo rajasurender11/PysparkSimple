@@ -38,6 +38,20 @@ aggDF = emp_df.groupBy("org_name").agg(count("*").alias("emp_count*"),
                                        sum("salary").alias("total_salary"))
 aggDF.show()
 
-resultDF = aggDF.na.fill(0,["total_salary"])
+resultDF = aggDF.na.fill("999",["total_salary"])
+resultDF = resultDF.na.fill("unknown",["org_name"])
+
+
+
+resultDF.createOrReplaceTempView("data")
+
+resultDF = resultDF.filter(resultDF.total_salary > 60000)
+
 resultDF.show()
+
+spark.sql("""select * from data where total_salary > 60000 """)
+
+resultDF = resultDF.withColumnRenamed("total_salary","total_income")
+
+resultDF.cache()
 

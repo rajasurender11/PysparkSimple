@@ -1,5 +1,6 @@
 from pyspark.sql import *
 from pyspark import *
+from pyspark.sql.functions import col
 
 spark = SparkSession \
     .builder \
@@ -30,6 +31,10 @@ emp_df.createOrReplaceTempView("emp")
 skills_rdd = spark.sparkContext.parallelize(skills_data)
 skills_df = skills_rdd.toDF(skills_columns)
 skills_df.createOrReplaceTempView("skills")
+
+joinedDF = emp_df.join(skills_df, col("emp_id") == col("id"),"inner")
+
+
 
 
 spark.sql("""

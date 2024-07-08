@@ -14,3 +14,8 @@ if __name__ == "__main__":
                       )
         df_grouped.printSchema()
         df_grouped.show()
+        #100,surender
+        #100,raja
+        df = df.dropDuplicates(["id"])
+        df = df.distinct()
+

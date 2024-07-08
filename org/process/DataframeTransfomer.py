@@ -22,6 +22,9 @@ if __name__ == "__main__":
         if i[1] == "int":
             int_cols_array.append(i[0])
     df.select(int_cols_array).show()
+    df = df.filter(df["country"]== 'INDIA')
+    df = df.filter(col("country")!= 'INDIA')
+
 
 
 

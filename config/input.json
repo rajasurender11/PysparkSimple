@@ -1,0 +1,37 @@
+{
+  "DATA_PROCESS": [
+    {
+      "dataframe_name": "records_df",
+      "type_of_input": "file",
+      "format_type": "csv",
+      "input_loc": "C:\\surender\\hadoop_course\\4_inputfiles\\records.csv",
+      "input_condition": null,
+      "reading_args": {
+        "delimeter": ",",
+        "header": "False",
+        "multiline": "true",
+        "encoding": "ISO-8859-1"
+      }
+    },
+    {
+      "dataframe_name": "accounts_df",
+      "type_of_input": "file",
+      "format_type": "csv",
+      "input_loc": "C:\\surender\\hadoop_course\\4_inputfiles\\accounts_profile.csv",
+      "input_condition": null,
+      "reading_args": {
+        "delimeter": ",",
+        "header": "True",
+        "multiline": "true",
+        "encoding": "ISO-8859-1"
+      }
+    },
+    {
+      "dataframe_name": "emp_df",
+      "type_of_input": "file",
+      "format_type": "json",
+      "input_loc": "C:\\surender\\hadoop_course\\4_inputfiles\\emp.json",
+      "input_condition": null
+    }
+  ]
+}

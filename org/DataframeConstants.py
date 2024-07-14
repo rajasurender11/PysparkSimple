@@ -14,3 +14,5 @@ atm_trans_schema = StructType([
     StructField("trans_amount", IntegerType(), True),
     StructField("status", StringType(), True)
 ])
+
+accounts_profile_output_loc = "C:\\surender\\hadoop_course\\4_outputfiles\\accounts_profile"

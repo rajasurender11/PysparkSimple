@@ -1,17 +1,17 @@
 
+
 def method1():
-    print("Hello")
-    print("inside method")
+    print("Hello inside method1")
 
-def process():
-    method1()
+def method2():
+    print("Hello inside method2")
+
+method2()
 
 
 
-if __name__ == "__main__":
-    process()
-    print("my name is surender")
-    method1()
+
+
 
 
 

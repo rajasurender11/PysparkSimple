@@ -1,7 +1,8 @@
 
-from org.process.Landing_Driver import *
+from org.process.Landing_Driver import method1
 
-if __name__ == "__main__":
-    method1()
-    my_str = "a,b,c,d,e"
-    my_str_arr = my_str.sp
+print("This is inside landing_process " + __name__)
+
+
+my_str = "a,b,c,d,e"
+method1()

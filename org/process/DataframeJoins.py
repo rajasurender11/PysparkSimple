@@ -50,6 +50,9 @@ if __name__ == "__main__":
     group by  account_no,customer_name
     order by total_transamt desc
     limit 3
-    """).show(100,False)
+    """)
+
+    #accounts_df.write.format("parquet").save(accounts_profile_output_loc)
+    accounts_df.write.mode("overwrite").format("parquet").save(accounts_profile_output_loc)
 
 

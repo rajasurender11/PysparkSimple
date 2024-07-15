@@ -1,5 +1,7 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
+from pyspark.sql.window import Window
+from pyspark.sql.functions import *
 
 spark = SparkSession \
     .builder \
@@ -66,4 +68,38 @@ atms_trans_df = spark.read.format("csv")\
 
 
 json_df = spark.read.format("json").load(json_loc)
-json_df.show()
+
+atms_trans_df.createOrReplaceTempView("atm_trans")
+
+window_df =spark.sql("""
+select * from 
+(select 
+account_no,
+bank,
+trans_date,
+trans_amount,
+status,
+rank() over(partition by bank order by trans_amount desc) as rank_number,
+dense_rank() over(partition by bank order by trans_amount desc) as dense_rank_number,
+row_number() over(partition by bank order by trans_amount desc) as row_rank__number
+from 
+(select 
+account_no,
+atm_id,
+split(atm_id,':')[0] as bank,
+trans_date,
+trans_amount,
+status
+from atm_trans)a 
+)b
+
+""")
+
+windows_clause = Window.partitionBy("bank").orderBy(col("trans_amount").cast("int").desc())
+
+window_df.withColumn("rank_number1",rank().over(windows_clause)) \
+    .show(truncate=False)
+
+
+
+

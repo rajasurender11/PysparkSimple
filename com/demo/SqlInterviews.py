@@ -33,6 +33,7 @@ from t1
 
 """)
 
+df.show()
 
 df = spark.sql("""
 select  source,destination,row_count from(
@@ -48,7 +49,6 @@ group by source,destination
 
 
 
-
 df = spark.sql("""
 select source, destination, e1,e2, dense_rank() 
 over(partition by e1,e2 order by source)as  d_rank
@@ -60,6 +60,7 @@ from t1)a
 """)
 
 
+df.show()
 
 
 

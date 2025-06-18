@@ -45,8 +45,9 @@ top3AggDF =  aggDF \
 
 renamedAggDF = aggDF.withColumnRenamed("cust_id", "cust_no")
 
-joinedDF = renamedAggDF.alias("a").join(top3AggDF.alias("b"),renamedAggDF.cust_no == top3AggDF.cust_id,"left_outer")
-
+joinedDF = (renamedAggDF.alias("a")\
+    .join(top3AggDF.alias("b"),renamedAggDF.cust_no == top3AggDF.cust_id,"left_outer")
+            )
 joinedDF.show()
 
 resultDF = joinedDF.filter(col("cust_id").isNull()).select("cust_no","a.total_amount")

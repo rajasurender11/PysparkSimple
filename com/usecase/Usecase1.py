@@ -52,12 +52,14 @@ bottom3AggDF =  aggDF \
     .orderBy(col("total_amount").asc()) \
     .limit(3)
 
-top3AggDF.show()
+bottom3AggDF.show()
 
-joinedDF = custDF.join(top3AggDF,custDF.account_no ==  top3AggDF.cust_id,"inner")
-#joinedDF = custDF.join(top3AggDF,custDF.account_no ==  bottom3AggDF.cust_id,"inner")
+#joinedDF = custDF.join(top3AggDF,custDF.account_no ==  top3AggDF.cust_id,"inner")
+joinedDF = custDF.join(bottom3AggDF,custDF.account_no ==  bottom3AggDF.cust_id,"inner")
 resultDF = joinedDF\
     .select("cust_id","bank_name","customer_name","gender","mobile_no","total_amount")\
     .orderBy(col("total_amount").desc())
 
 resultDF.show()
+
+

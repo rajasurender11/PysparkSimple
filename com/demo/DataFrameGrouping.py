@@ -51,6 +51,8 @@ COUNT(emp_name) as emp_count,
 df = spark.sql("""select * from emp_table where org_name in ('TCS','INFOSYS')""")
 df.show()
 
+
+
 df = spark.sql("""select org_name,
 COUNT(emp_name) as emp_count,
  SUM(salary) as total_salary,

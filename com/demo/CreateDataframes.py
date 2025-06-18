@@ -50,7 +50,7 @@ cust_columns = ["cust_id","bank_name","cust_name","gender","mobile_no"]
 cust_loc ="C:\\surender\\hadoop_course\\4_inputfiles\\accounts_profile.txt"
 rdd = spark.sparkContext.textFile(cust_loc)
 tupled_rdd = rdd.map(lambda elem : map_record_to_tuple(elem))
-df5 = tupled_rdd.toDF(cust_columns)
+
 #df5.show()
 df6 = spark.createDataFrame(tupled_rdd,AllSchemas.custSchema)
 #df6.show()

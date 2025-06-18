@@ -13,4 +13,18 @@ spark = SparkSession \
 schema =["name","sal"]
 
 df = spark.createDataFrame(data,schema)
-df.withColumn("f_name",split(col("name"),"\\|")[0]).show()
+df.withColumn("f_name",split(col("name"),"\\|")[0])
+
+
+explode_data =(["surender","eng|maths"],
+               ["raja","eng,maths,science"],)
+
+#eng,maths,science   ,|
+
+explode_schema =["name","subjects"]
+
+df = spark.createDataFrame(explode_data,explode_schema)
+df = df.select(df.name,split(df.subjects,"\\|").alias("array_sub"),explode(split(df.subjects,"\\|")).alias("explode_sub"))
+#df.select(df.name,explode(split(df.subjects,"\\|")).alias("subject")).show()
+
+df.explain()

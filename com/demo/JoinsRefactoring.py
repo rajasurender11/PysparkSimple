@@ -65,7 +65,7 @@ on(emp.emp_id = skills.id)
 """).show()
 
 
-spark.sql("""
+df = spark.sql("""
 select emp_id,emp_name, id,skill_set
 from
 emp
@@ -73,7 +73,9 @@ left outer join
 skills
 on(emp.emp_id = skills.id)
 where id is null
-""").show()
+""")
+
+df.explain()
 
 
 spark.sql("""

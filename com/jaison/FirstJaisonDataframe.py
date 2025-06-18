@@ -74,6 +74,7 @@ atmDF.groupBy(col("trans_status"))\
          ) \
     .show()
 
+atmDF.dropDuplicates()
 
 
 

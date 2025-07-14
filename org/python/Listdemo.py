@@ -1,16 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
     my_list = ["surender","raja","ajay"]
     f_name = my_list[0]
@@ -20,7 +8,7 @@ if __name__ == "__main__":
     range_list = list(range(0,3))
     print(range_list)
     for i in range_list:
-        print(my_list[i])
+        print(my_list[i])# my_list[0],my_list[1]
 
     my_list.append("kumar")
     print(my_list)
@@ -45,5 +33,9 @@ if __name__ == "__main__":
     my_str = "surender"
     my_reverse_str = ""
     for i in my_str:
+        print(i)
         my_reverse_str = i+my_reverse_str
+        print(my_reverse_str)
     print(my_reverse_str)
+
+    print(reversed("data"))

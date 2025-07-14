@@ -59,7 +59,7 @@ def main():
     """)
     result_df.printSchema()
     filled_df = result_df.fillna(0,["total_amount"])
-    #filled_df.fillna("unknown",["customer_id","gender"]).show()
+    filled_df.fillna("unknown",["customer_id","gender"]).show()
     result_df.fillna("0").show()
 
 
